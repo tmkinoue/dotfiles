@@ -35,6 +35,10 @@ if filereadable(expand('${path}/.vimrc'))
 endif
 EOS`
 
+if [ ! -f ~/.vimrc ]; then
+    touch ~/.vimrc
+fi
+
 if [ "$(grep -c "${path}/.vimrc" ~/.vimrc)" -eq 0 ]; then
     echo "$add" >> ~/.vimrc
 fi
