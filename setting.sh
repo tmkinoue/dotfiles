@@ -24,6 +24,10 @@ if [ -f ~/.bash_profile ]; then
   fi
 fi
 
+if [ "$(uname)" != 'Darwin' ] && [ ! -f ~/.colorrc ]; then
+    dircolors -p > ~/.colorrc
+fi
+
 source ~/.bash_profile
 # set .bash_profile end
 
