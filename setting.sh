@@ -47,3 +47,7 @@ if [ "$(grep -c "${path}/.vimrc" ~/.vimrc)" -eq 0 ]; then
     echo "$add" >> ~/.vimrc
 fi
 # set .vimrc end
+
+#set .gitignore_global
+git config --global core.excludesfile ${path}/.gitignore_global
+#set .gitignore_global end
