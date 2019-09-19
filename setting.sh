@@ -52,3 +52,8 @@ fi
 #set .gitignore_global
 git config --global core.excludesfile ${path}/.gitignore_global
 #set .gitignore_global end
+
+#set .gitconfig_private
+parentdir=`cd \`dirname $0\`/..;pwd`
+git config --global includeIf."gitdir:${parentdir}/".path "${path}/.gitconfig_private"
+#set .gitconfig_private end
