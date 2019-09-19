@@ -5,6 +5,7 @@
 #cp -i .vimrc ~/.vimrc
 
 path=`dirname "${0}"`
+# change relative path to absolute path
 expr "${0}" : "/.*" > /dev/null || path=`(cd "${path}" && pwd)`
 
 # set .bash_profile
