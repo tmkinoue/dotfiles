@@ -6,6 +6,10 @@ if [ "$(uname)" = 'Darwin' ]; then
     #export LSCOLORS=xbfxcxdxbxegedabagacad
     alias ls='ls -G'
     alias ll='ls -laG'
+    # git command support
+    if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash ]; then
+        source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+    fi
 else
     eval `dircolors ~/.colorrc`
     alias ls='ls --color=auto'
