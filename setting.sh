@@ -8,10 +8,22 @@ path=`dirname "${0}"`
 # change relative path to absolute path
 expr "${0}" : "/.*" > /dev/null || path=`(cd "${path}" && pwd)`
 
+if [ ! -f ./aliases ]; then
+    touch ./aliases
+    echo "alias change_us_keyboard='osascript ${path}/scripts/keyboard_ansi.scpt'" >> aliases
+    echo "alias change_jis_keyboard='osascript ${path}/scripts/keyboard_jis.scpt'" >> aliases
+fi
+
 # set .bash_profile
 add=`cat <<EOS
 if [ -f ${path}/.bash_profile ]; then
     . ${path}/.bash_profile
+fi
+EOS`
+
+add_alias=`cat <<EOS
+if [ -f ${path}/aliases ]; then
+    # . ${path}/aliases
 fi
 EOS`
 
@@ -22,6 +34,9 @@ fi
 if [ -f ~/.bash_profile ]; then
   if [ "$(grep -c "${path}/.bash_profile" ~/.bash_profile)" -eq 0 ]; then
     echo "$add" >> ~/.bash_profile
+  fi
+  if [ "$(grep -c "${path}/aliases" ~/.bash_profile)" -eq 0 ]; then
+    echo "$add_alias" >> ~/.bash_profile
   fi
 fi
 
