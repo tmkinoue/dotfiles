@@ -23,7 +23,7 @@ EOS`
 
 add_alias=`cat <<EOS
 if [ -f ${path}/aliases ]; then
-    # . ${path}/aliases
+    . ${path}/aliases
 fi
 EOS`
 
