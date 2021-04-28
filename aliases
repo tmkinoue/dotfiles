@@ -1,0 +1,17 @@
+if [ "$(uname)" = 'Darwin' ]; then
+    # Mac
+    #export LSCOLORS=xbfxcxdxbxegedabagacad
+    alias ls='ls -G'
+    alias ll='ls -laG'
+
+    # apple script
+    alias change_us_keyboard='osascript /Users/t-inoue/private/dotfiles/scripts/keyboard_ansi.scpt'
+    alias change_jis_keyboard='osascript /Users/t-inoue/private/dotfiles/scripts/keyboard_jis.scpt'
+else
+    eval `dircolors ~/.colorrc`
+    alias ls='ls --color=auto'
+    alias ll='ls -alF --color=auto'
+    alias ps='ps --sort=start_time'
+fi
+
+alias grep='grep --color'

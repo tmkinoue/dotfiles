@@ -8,22 +8,10 @@ path=`dirname "${0}"`
 # change relative path to absolute path
 expr "${0}" : "/.*" > /dev/null || path=`(cd "${path}" && pwd)`
 
-if [ ! -f ./aliases ]; then
-    touch ./aliases
-    echo "alias change_us_keyboard='osascript ${path}/scripts/keyboard_ansi.scpt'" >> aliases
-    echo "alias change_jis_keyboard='osascript ${path}/scripts/keyboard_jis.scpt'" >> aliases
-fi
-
 # set .bash_profile
 add=`cat <<EOS
 if [ -f ${path}/.bash_profile ]; then
     . ${path}/.bash_profile
-fi
-EOS`
-
-add_alias=`cat <<EOS
-if [ -f ${path}/aliases ]; then
-    . ${path}/aliases
 fi
 EOS`
 
@@ -35,18 +23,30 @@ if [ -f ~/.bash_profile ]; then
   if [ "$(grep -c "${path}/.bash_profile" ~/.bash_profile)" -eq 0 ]; then
     echo "$add" >> ~/.bash_profile
   fi
-  if [ "$(grep -c "${path}/aliases" ~/.bash_profile)" -eq 0 ]; then
-    echo "$add_alias" >> ~/.bash_profile
-  fi
-fi
-
-if [ "$(uname)" != 'Darwin' ] && [ ! -f ~/.colorrc ]; then
-    dircolors -p > ~/.colorrc
 fi
 
 . ~/.bash_profile
 # set .bash_profile end
 
+# set .zshrc
+add_zshrc=`cat <<EOS
+if [ -f ${path}/.zshrc ]; then
+    . ${path}/.zshrc
+fi
+EOS`
+
+if [ ! -f ~/.zshrc ]; then
+    touch ~/.zshrc
+fi
+
+if [ -f ~/.zshrc ]; then
+  if [ "$(grep -c "${path}/.zshrc" ~/.zshrc)" -eq 0 ]; then
+    echo "$add_zshrc" >> ~/.zshrc
+  fi
+fi
+
+. ~/.zshrc
+# set .zshrc end
 
 # set .vimrc
 add=`cat <<EOS
@@ -63,6 +63,12 @@ if [ "$(grep -c "${path}/.vimrc" ~/.vimrc)" -eq 0 ]; then
     echo "$add" >> ~/.vimrc
 fi
 # set .vimrc end
+
+# set .colorrc
+if [ "$(uname)" != 'Darwin' ] && [ ! -f ~/.colorrc ]; then
+    dircolors -p > ~/.colorrc
+fi
+# set .colorrc end
 
 #set .gitignore_global
 git config --global core.excludesfile ${path}/.gitignore_global
