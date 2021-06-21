@@ -28,4 +28,11 @@ filetype indent on
 "filetype plugin on
 autocmd BufNewFile,BufRead *.tpl :set filetype=html
 
+"##### 最後にカーソルがあった場所 #####
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+
+
 "#####vim setting file from my git repository end#######
