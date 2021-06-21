@@ -17,3 +17,7 @@ alias history='history -t "%F %T"'
 
 # beep off
 setopt nobeep
+
+# cli comment out
+setopt interactivecomments
+
