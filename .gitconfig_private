@@ -1,3 +1,5 @@
 [user]
   name = tmkinoue
   email = tmkinoue@outlook.com
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_personal_ed25519"
