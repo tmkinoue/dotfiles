@@ -28,6 +28,13 @@ fi
 . ~/.bash_profile
 # set .bash_profile end
 
+# set zsh
+# set ~/.zsh/
+mkdir ~/.zsh
+curl -o ~/.zsh/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+curl -o ~/.zsh/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o ~/.zsh/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
 # set .zshrc
 add_zshrc=`cat <<EOS
 if [ -f ${path}/.zshrc ]; then
@@ -47,6 +54,7 @@ fi
 
 . ~/.zshrc
 # set .zshrc end
+# set zsh end
 
 # set .vimrc
 add=`cat <<EOS
