@@ -6,6 +6,12 @@ Mac環境で初期設定しておきたい各種設定ファイル
 1. Homebrewをinstall
     - https://brew.sh/index_ja を参照
 
+1. zsh-completionsインストール
+
+    ```
+    brew install zsh-completions
+    ```
+
 1. ssh key発行
 
     ```
