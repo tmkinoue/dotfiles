@@ -3,6 +3,8 @@
 Mac環境で初期設定しておきたい各種設定ファイル
 
 ## install
+1. Homebrewをinstall
+    - https://brew.sh/index_ja を参照
 
 1. ssh key発行
 
@@ -12,8 +14,7 @@ Mac環境で初期設定しておきたい各種設定ファイル
     ※ keyの名前は[gitconfig](/.gitconfig_private)の設定に合わせる
 
 1. ssh keyをgithubに登録
-
-    https://github.com/settings/keys から追加
+    - https://github.com/settings/keys から追加
 
 
 1. ssh keyを指定してgithubからclone

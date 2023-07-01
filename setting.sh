@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin"
+
 #cp -i .bashrc ~/.bashrc
 #cp -i .bash_profile ~/.bash_profile
 #cp -i .vimrc ~/.vimrc
